@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+import React from 'react';
+
+const DataPost = () => {
+    return <button type="submit">Submit</button>;
+};
+
+export default DataPost;
+=======
 import { useState } from 'react';
 import ContactInfo from './ContactInfo';
 import PersonalData from './PersonalData';
@@ -49,3 +58,4 @@ const DataPost = () => {
 };
 
 export default DataPost;
+>>>>>>> 21360c2be06ec07adb5d7755bea86f67fc0ce802

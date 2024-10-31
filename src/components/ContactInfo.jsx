@@ -1,46 +1,24 @@
-import React, { useState } from 'react';
-
-const DataPost = (info) => {
-    // Function to handle data submission
-    console.log('Submitting data:', info);
-    // Add your data submission logic here (e.g., API call)
-};
+import React from 'react';
+import { useFormContext } from 'react-hook-form';
 
 const ContactInfo = () => {
-    const [info, setInfo] = useState({
-        email: '',
-        phone: ''
-    });
+  const { register, formState: { errors } } = useFormContext();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        DataPost(info);
-    };
-
-    return (
-        <div>
-            <h2>Información de contacto</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Email: </label>
-                    <input 
-                        type="email" 
-                        value={info.email} 
-                        onChange={(e) => setInfo({ ...info, email: e.target.value })} 
-                    />
-                </div>
-                <div>
-                    <label>Teléfono: </label>
-                    <input 
-                        type="tel" 
-                        value={info.phone} 
-                        onChange={(e) => setInfo({ ...info, phone: e.target.value })} 
-                    />
-                </div>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    );
+  return (
+    <div>
+      <h3>Información de Contacto</h3>
+      <div>
+        <label>Email</label>
+        <input {...register("email", { required: "Email es requerido", pattern: { value: /^\S+@\S+$/i, message: "Formato de email inválido" } })} />
+        {errors.email && <p>{errors.email.message}</p>}
+      </div>
+      <div>
+        <label>Teléfono</label>
+        <input {...register("phone", { required: "Teléfono es requerido" })} />
+        {errors.phone && <p>{errors.phone.message}</p>}
+      </div>
+    </div>
+  );
 };
 
 export default ContactInfo;

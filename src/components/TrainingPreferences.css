@@ -1,0 +1,29 @@
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: center; /* Centra los botones horizontalmente */
+}
+
+button {
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    min-width: 120px; /* Ancho mínimo para dar uniformidad a los botones */
+    text-align: center; /* Centra el texto dentro del botón */
+}
+
+button.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+button:hover {
+    background-color: #007bff;
+    color: white;
+}

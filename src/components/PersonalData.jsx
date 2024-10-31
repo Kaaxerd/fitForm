@@ -1,17 +1,24 @@
 import React from 'react';
+import { useFormContext } from 'react-hook-form';
 
-const DataPost = ({ formData }) => {
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formData);
-        // Add form submission logic here
-    };
+const PersonalData = () => {
+  const { register, formState: { errors } } = useFormContext();
 
-    return (
-        <button type="submit" onClick={handleSubmit}>
-            Submit
-        </button>
-    );
+  return (
+    <div>
+      <h3>Datos Personales</h3>
+      <div>
+        <label>Nombre</label>
+        <input {...register("name", { required: "Nombre es requerido" })} />
+        {errors.name && <p>{errors.name.message}</p>}
+      </div>
+      <div>
+        <label>Edad</label>
+        <input type="number" {...register("age", { min: 18, message: "Debe ser mayor de edad" })} />
+        {errors.age && <p>{errors.age.message}</p>}
+      </div>
+    </div>
+  );
 };
 
-export default DataPost;
+export default PersonalData;
